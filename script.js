@@ -47,7 +47,7 @@ function buyClickUpgrade() {
 function buyClickUpgrade1() {
     if (clicks >= clickUpgradeCost1) {
         clicks -= clickUpgradeCost1;
-        perClick += 1;
+        perClick += 5;
         clickUpgradeCost1 = Math.floor(clickUpgradeCost1 * 1.25);
         updateUI();
         showMessage("Click power upgraded!");
