@@ -1,0 +1,114 @@
+let clicks = 0;
+let perClick = 1;
+let autoClick = 0;
+
+let clickUpgradeCost0 = 50;
+let clickUpgradeCost1 = 275;
+let clickUpgradeCost2 = 500;
+let clickUpgradeCost3 = 3000;
+let autoUpgradeCost0 = 50;
+let autoUpgradeCost1 = 275;
+
+function updateUI() {
+    document.getElementById("clicks").textContent = clicks;
+    document.getElementById("perClick").textContent = perClick;
+    document.getElementById("autoClick").textContent = autoClick;
+
+    document.getElementById("clickUpgradeCost0").textContent = clickUpgradeCost0;
+    document.getElementById("clickUpgradeCost1").textContent = clickUpgradeCost1;
+    document.getElementById("clickUpgradeCost2").textContent = clickUpgradeCost2;
+    document.getElementById("clickUpgradeCost3").textContent = clickUpgradeCost3;
+    document.getElementById("autoUpgradeCost0").textContent = autoUpgradeCost0;
+    document.getElementById("autoUpgradeCost1").textContent = autoUpgradeCost1;
+}
+
+
+function clickButton() {
+    clicks += perClick;
+    updateUI();
+}
+
+function showMessage(text) {
+    document.getElementById("message").textContent = text;
+}
+
+function buyClickUpgrade() {
+    if (clicks >= clickUpgradeCost0) {
+        clicks -= clickUpgradeCost0;
+        perClick += 1;
+        clickUpgradeCost0 = Math.floor(clickUpgradeCost0 * 1.25);
+        updateUI();
+        showMessage("Click power upgraded!");
+    } else {
+        showMessage("Not enough clicks for Click Power upgrade.");
+    }
+}
+
+function buyClickUpgrade1() {
+    if (clicks >= clickUpgradeCost1) {
+        clicks -= clickUpgradeCost1;
+        perClick += 1;
+        clickUpgradeCost1 = Math.floor(clickUpgradeCost1 * 1.25);
+        updateUI();
+        showMessage("Click power upgraded!");
+    } else {
+        showMessage("Not enough clicks for Click Power upgrade.");
+    }
+}
+
+function buyClickUpgrade2() {
+    if (clicks >= clickUpgradeCost2) {
+        clicks -= clickUpgradeCost2;
+        perClick += 10;
+        clickUpgradeCost2 = Math.floor(clickUpgradeCost2 * 1.25);
+        updateUI();
+        showMessage("Click power upgraded!");
+    } else {
+        showMessage("Not enough clicks for Click Power upgrade.");
+    }
+}
+
+function buyClickUpgrade3() {
+    if (clicks >= clickUpgradeCost3) {
+        clicks -= clickUpgradeCost3;
+        perClick += 50;
+        clickUpgradeCost3 = Math.floor(clickUpgradeCost3 * 1.25);
+        updateUI();
+        showMessage("Click power upgraded!");
+    } else {
+        showMessage("Not enough clicks for Click Power upgrade.");
+    }
+}
+
+function buyAutoUpgrade() {
+    if (clicks >= autoUpgradeCost0) {
+        clicks -= autoUpgradeCost0;
+        autoClick += 1;
+        autoUpgradeCost0 = Math.floor(autoUpgradeCost0 * 1.33);
+        updateUI();
+        showMessage("Auto clicker upgraded!");
+    } else {
+        showMessage("Not enough clicks for Auto Clicker.");
+    }
+}
+
+function buyAutoUpgrade1() {
+    if (clicks >= autoUpgradeCost1) {
+        clicks -= autoUpgradeCost1;
+        autoClick += 5;
+        autoUpgradeCost1 = Math.floor(autoUpgradeCost1 * 1.33);
+        updateUI();
+        showMessage("Auto clicker upgraded!");
+    } else {
+        showMessage("Not enough clicks for Auto Clicker.");
+    }
+}
+
+setInterval(() => {
+    if (autoClick > 0) {
+        clicks += autoClick;
+        updateUI();
+    }
+}, 1000);
+
+updateUI();
