@@ -6,6 +6,7 @@ let clickUpgradeCost0 = 50;
 let clickUpgradeCost1 = 275;
 let clickUpgradeCost2 = 500;
 let clickUpgradeCost3 = 3000;
+let clickUpgradeCost4 = 7500;
 let autoUpgradeCost0 = 50;
 let autoUpgradeCost1 = 275;
 let autoUpgradeCost2 = 500;
@@ -20,6 +21,7 @@ function updateUI() {
     document.getElementById("clickUpgradeCost1").textContent = clickUpgradeCost1;
     document.getElementById("clickUpgradeCost2").textContent = clickUpgradeCost2;
     document.getElementById("clickUpgradeCost3").textContent = clickUpgradeCost3;
+    document.getElementById("clickUpgradeCost4").textContent = clickUpgradeCost4;
     document.getElementById("autoUpgradeCost0").textContent = autoUpgradeCost0;
     document.getElementById("autoUpgradeCost1").textContent = autoUpgradeCost1;
     document.getElementById("autoUpgradeCost2").textContent = autoUpgradeCost2;
@@ -77,6 +79,18 @@ function buyClickUpgrade3() {
         clicks -= clickUpgradeCost3;
         perClick += 50;
         clickUpgradeCost3 = Math.floor(clickUpgradeCost3 * 1.25);
+        updateUI();
+        showMessage("Click power upgraded!");
+    } else {
+        showMessage("Not enough clicks for Click Power upgrade.");
+    }
+}
+
+function buyClickUpgrade4() {
+    if (clicks >= clickUpgradeCost4) {
+        clicks -= clickUpgradeCost4;
+        perClick += 100;
+        clickUpgradeCost4 = Math.floor(clickUpgradeCost3 * 1.25);
         updateUI();
         showMessage("Click power upgraded!");
     } else {
