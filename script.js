@@ -7,9 +7,9 @@ let clickUpgradeCost1 = 275;
 let clickUpgradeCost2 = 500;
 let clickUpgradeCost3 = 3000;
 let clickUpgradeCost4 = 7500;
-let autoUpgradeCost0 = 50;
-let autoUpgradeCost1 = 275;
-let autoUpgradeCost2 = 500;
+let autoUpgradeCost0 = 75;
+let autoUpgradeCost1 = 350;
+let autoUpgradeCost2 = 625;
 let autoUpgradeCost3 = 3000;
 
 function updateUI() {
