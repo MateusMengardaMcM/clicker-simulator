@@ -1,6 +1,7 @@
 let clicks = 0;
 let perClick = 1;
 let autoClick = 0;
+let rebirthMultiplier = 1;
 
 let clickUpgradeCost0 = 50;
 let clickUpgradeCost1 = 275;
@@ -30,8 +31,16 @@ function updateUI() {
 
 
 function clickButton() {
-    clicks += perClick;
+    const gain = Math.floor(perClick * rebirthMultiplier);
+    clicks += gain;
     updateUI();
+
+    const img = document.querySelector(".btn-img img");
+    img.classList.add("pop");
+
+    setTimeout(() => {
+        img.classList.remove("pop");
+    }, 100);
 }
 
 function showMessage(text) {
@@ -148,22 +157,64 @@ function buyAutoUpgrade3() {
 
 setInterval(() => {
     if (autoClick > 0) {
-        clicks += autoClick;
+        const gain = Math.floor(autoClick * rebirthMultiplier);
+        clicks += gain;
         updateUI();
     }
 }, 1000);
 
-function clickButton() {
-    clicks += perClick;
-    document.getElementById("clicks").textContent = clicks;
+function tryRebirth() {
+    if (clicks < 20000) {
+        alert("You need at least 20,000 potatoes to rebirth!");
+        return;
+    }
 
-    const img = document.querySelector(".btn-img img");
+    const confirmRebirth = confirm(
+        "Are you sure you want to rebirth?\n\n" +
+        "You will lose ALL potatoes, upgrades and auto-clickers,\n" +
+        "but you will gain a permanent multiplier!"
+    );
 
-    img.classList.add("pop");
+    if (!confirmRebirth) return;
 
-    setTimeout(() => {
-        img.classList.remove("pop");
-    }, 100);
+    const gainedMultiplier = clicks / 10000;
+    rebirthMultiplier += gainedMultiplier;
+
+    clicks = 0;
+    perClick = 1;
+    autoClick = 0;
+
+    clickUpgradeCost0 = 50;
+    clickUpgradeCost1 = 275;
+    clickUpgradeCost2 = 500;
+    clickUpgradeCost3 = 3000;
+    clickUpgradeCost4 = 7500;
+
+    autoUpgradeCost0 = 75;
+    autoUpgradeCost1 = 350;
+    autoUpgradeCost2 = 625;
+    autoUpgradeCost3 = 3000;
+
+    updateUI();
+
+    showMessage(
+        "REBIRTH COMPLETE! Multiplier x" +
+        Math.round(rebirthMultiplier)
+    );
+}
+
+function enterCode() {
+    const code = document.getElementById("codeInput").value.trim();
+
+    if (code === "potatoSigma") {
+        clicks += 20000;
+        updateUI();
+        showMessage("CODE ACCEPTED! +20,000 potatoes");
+    } else {
+        showMessage("Invalid code");
+    }
+
+    document.getElementById("codeInput").value = "";
 }
 
 updateUI();
