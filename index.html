@@ -1,65 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Clicker Game</h1>
 
-    <p>Clicks: <span id="clicks">0</span></p>
-    <p>Clicks per click: <span id="perClick">1</span></p>
-    <p>Auto clicks per second: <span id="autoClick">0</span></p>
+    <div class="container">
 
-    <button id="mainButton" onclick="clickButton()">Click here</button>
+        <div class="game">
+            <h1>Clicker Game</h1>
 
-    <h2>Shop</h2>
+            <p>Clicks: <span id="clicks">0</span></p>
+            <p>Clicks per click: <span id="perClick">1</span></p>
+            <p>Auto clicks per second: <span id="autoClick">0</span></p>
 
-    <div class="shop-item">
-        <h3>Click Power</h3>
-        <p>Increase clicks per click by 1</p>
-        <p>Cost: <span id="clickUpgradeCost0">50</span> clicks</p>
-        <button onclick="buyClickUpgrade()">Buy</button>
+            <button class="btn-img" id="mainButton" onclick="clickButton()">
+                <img src="capybara.png" alt="Capybara">
+            </button>
+
+            <p id="message"></p>
+        </div>
+
+        <div class="shop">
+            <h2>Shop</h2>
+
+            <div class="shop-item">
+                <h3>Click Power +1</h3>
+                <p>Increase clicks per click by 1</p>
+                <p>Cost: <span id="clickUpgradeCost0">50</span> clicks</p>
+                <button onclick="buyClickUpgrade()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Click Power +5</h3>
+                <p>Increase clicks per click by 5</p>
+                <p>Cost: <span id="clickUpgradeCost1">275</span> clicks</p>
+                <button onclick="buyClickUpgrade1()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Click Power +10</h3>
+                <p>Increase clicks per click by 10</p>
+                <p>Cost: <span id="clickUpgradeCost2">500</span> clicks</p>
+                <button onclick="buyClickUpgrade2()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Click Power +50</h3>
+                <p>Increase clicks per click by 50</p>
+                <p>Cost: <span id="clickUpgradeCost3">3000</span> clicks</p>
+                <button onclick="buyClickUpgrade3()">Buy</button>
+            </div>
+
+            <hr>
+
+            <div class="shop-item">
+                <h3>Auto Clicker +1</h3>
+                <p>Gain 1 click per second</p>
+                <p>Cost: <span id="autoUpgradeCost0">50</span> clicks</p>
+                <button onclick="buyAutoUpgrade()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Auto Clicker +5</h3>
+                <p>Gain 5 clicks per second</p>
+                <p>Cost: <span id="autoUpgradeCost1">275</span> clicks</p>
+                <button onclick="buyAutoUpgrade1()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Auto Clicker +10</h3>
+                <p>Gain 10 clicks per second</p>
+                <p>Cost: <span id="autoUpgradeCost2">500</span> clicks</p>
+                <button onclick="buyAutoUpgrade2()">Buy</button>
+            </div>
+
+            <div class="shop-item">
+                <h3>Auto Clicker +50</h3>
+                <p>Gain 50 clicks per second</p>
+                <p>Cost: <span id="autoUpgradeCost3">3000</span> clicks</p>
+                <button onclick="buyAutoUpgrade3()">Buy</button>
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="shop-item">
-        <h3>Click Power</h3>
-        <p>Increase clicks per click by 5</p>
-        <p>Cost: <span id="clickUpgradeCost1">275</span> clicks</p>
-        <button onclick="buyClickUpgrade()">Buy</button>
-    </div>
-
-    <div class="shop-item">
-        <h3>Click Power</h3>
-        <p>Increase clicks per click by 10</p>
-        <p>Cost: <span id="clickUpgradeCost2">500</span> clicks</p>
-        <button onclick="buyClickUpgrade2()">Buy</button>
-    </div>
-
-    <div class="shop-item">
-        <h3>Click Power</h3>
-        <p>Increase clicks per click by 50</p>
-        <p>Cost: <span id="clickUpgradeCost3">3000</span> clicks</p>
-        <button onclick="buyClickUpgrade3()">Buy</button>
-    </div>
-
-    <div class="shop-item">
-        <h3>Auto Clicker</h3>
-        <p>Gain +1 auto click per second</p>
-        <p>Cost: <span id="autoUpgradeCost0">50</span> clicks</p>
-        <button onclick="buyAutoUpgrade()">Buy</button>
-    </div>
-
-    <div class="shop-item">
-        <h3>Auto Clicker</h3>
-        <p>Gain +5 auto click per second</p>
-        <p>Cost: <span id="autoUpgradeCost1">275</span> clicks</p>
-        <button onclick="buyAutoUpgrade1()">Buy</button>
-    </div>
-
-    <p id="message"></p>
 
     <script src="script.js"></script>
 </body>

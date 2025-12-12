@@ -8,6 +8,8 @@ let clickUpgradeCost2 = 500;
 let clickUpgradeCost3 = 3000;
 let autoUpgradeCost0 = 50;
 let autoUpgradeCost1 = 275;
+let autoUpgradeCost2 = 500;
+let autoUpgradeCost3 = 3000;
 
 function updateUI() {
     document.getElementById("clicks").textContent = clicks;
@@ -20,6 +22,8 @@ function updateUI() {
     document.getElementById("clickUpgradeCost3").textContent = clickUpgradeCost3;
     document.getElementById("autoUpgradeCost0").textContent = autoUpgradeCost0;
     document.getElementById("autoUpgradeCost1").textContent = autoUpgradeCost1;
+    document.getElementById("autoUpgradeCost2").textContent = autoUpgradeCost2;
+    document.getElementById("autoUpgradeCost3").textContent = autoUpgradeCost3;
 }
 
 
@@ -104,11 +108,48 @@ function buyAutoUpgrade1() {
     }
 }
 
+function buyAutoUpgrade2() {
+    if (clicks >= autoUpgradeCost2) {
+        clicks -= autoUpgradeCost2;
+        autoClick += 10;
+        autoUpgradeCost2 = Math.floor(autoUpgradeCost2 * 1.33);
+        updateUI();
+        showMessage("Auto clicker upgraded!");
+    } else {
+        showMessage("Not enough clicks for Auto Clicker.");
+    }
+}
+
+function buyAutoUpgrade3() {
+    if (clicks >= autoUpgradeCost3) {
+        clicks -= autoUpgradeCost3;
+        autoClick += 50;
+        autoUpgradeCost3 = Math.floor(autoUpgradeCost3 * 1.33);
+        updateUI();
+        showMessage("Auto clicker upgraded!");
+    } else {
+        showMessage("Not enough clicks for Auto Clicker.");
+    }
+}
+
 setInterval(() => {
     if (autoClick > 0) {
         clicks += autoClick;
         updateUI();
     }
 }, 1000);
+
+function clickButton() {
+    clicks += perClick;
+    document.getElementById("clicks").textContent = clicks;
+
+    const img = document.querySelector(".btn-img img");
+
+    img.classList.add("pop");
+
+    setTimeout(() => {
+        img.classList.remove("pop");
+    }, 100);
+}
 
 updateUI();
