@@ -103,3 +103,20 @@ h1 {
 .shop::-webkit-scrollbar-track {
     background: #ffffff;
 }
+
+button {
+    background-color: rgb(255, 225, 0);
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+    color: rgb(155, 144, 25);
+}
+
+button:hover {
+    background-color: rgb(155, 144, 25);
+    color: rgb(255, 225, 0);
+}
