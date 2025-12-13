@@ -10,7 +10,7 @@ A little game that you can click and earn click points, which you can use to do 
 
 ## Stack utilized
 
-**Front-end:** Html, css & JavaScript.
+**Front-end:** Html, css and JavaScript.
 
 ## Rules
 
