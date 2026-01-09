@@ -12,6 +12,7 @@ let autoUpgradeCost0 = 75;
 let autoUpgradeCost1 = 350;
 let autoUpgradeCost2 = 625;
 let autoUpgradeCost3 = 3000;
+let autoUpgradeCost4 = 8750;
 
 function updateUI() {
     document.getElementById("clicks").textContent = clicks;
@@ -27,6 +28,7 @@ function updateUI() {
     document.getElementById("autoUpgradeCost1").textContent = autoUpgradeCost1;
     document.getElementById("autoUpgradeCost2").textContent = autoUpgradeCost2;
     document.getElementById("autoUpgradeCost3").textContent = autoUpgradeCost3;
+    document.getElementById("autoUpgradeCost4").textContent = autoUpgradeCost4;
 }
 
 
@@ -155,6 +157,18 @@ function buyAutoUpgrade3() {
     }
 }
 
+function buyAutoUpgrade4() {
+    if (clicks >= autoUpgradeCost4) {
+        clicks -= autoUpgradeCost4;
+        autoClick += 100;
+        autoUpgradeCost4 = Math.floor(autoUpgradeCost4 * 1.33);
+        updateUI();
+        showMessage("Auto clicker upgraded!");
+    } else {
+        showMessage("Not enough clicks for Auto Clicker.");
+    }
+}
+
 setInterval(() => {
     if (autoClick > 0) {
         const gain = Math.floor(autoClick * rebirthMultiplier);
@@ -206,7 +220,7 @@ function tryRebirth() {
 function enterCode() {
     const code = document.getElementById("codeInput").value.trim();
 
-    if (code === "potatoSigma") {
+    if (code === "T3stC0d3") {
         clicks += 20000;
         updateUI();
         showMessage("CODE ACCEPTED! +20,000 potatoes");
