@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="rebirthContainer">
+
+    <div id="buttonsContainer">
         <button id="rebirthBtn" onclick="tryRebirth()">Rebirth</button>
-    
+
         <div id="codeContainer">
-        <input type="text" id="codeInput" placeholder="Enter code" />
-        <button id="codeBtn" onclick="enterCode()">OK</button>
+            <input type="text" id="codeInput" placeholder="Enter code" />
+            <button id="codeBtn" onclick="enterCode()">OK</button>
+        </div>
+
+        <div id="skinContainer">
+            <button id="skinBtn" onclick="seeSkin()" aria-label="Skins">
+                <img src="skinIcon.png" alt="skins">
+            </button>
         </div>
     </div>
+
     <div class="container">
 
         <div class="game">
@@ -25,7 +33,7 @@
             <p>Auto-potatos per second: <span id="autoClick">0</span></p>
 
             <button class="btn-img" id="mainButton" onclick="clickButton()">
-                <img src="potato.png" alt="potato">
+                <img id="potatoImg" src="potato.png" alt="potato">
             </button>
 
             <p id="message"></p>
@@ -83,7 +91,7 @@
                     <button onclick="buyClickUpgrade2()">Buy</button>
                 </div>
             </div>
-           
+
             <div class="shop-item">
                 <img src="PotatoFarm.png" alt="Potato Farm">
                 <div>
@@ -94,7 +102,6 @@
                 </div>
             </div>
 
-
             <div class="shop-item">
                 <img src="executivePotato.png" alt="Executive Potato">
                 <div>
@@ -104,7 +111,7 @@
                     <button onclick="buyClickUpgrade3()">Buy</button>
                 </div>
             </div>
-           
+
             <div class="shop-item">
                 <img src="executivePotato.png" alt="Executive Potato">
                 <div>
@@ -130,13 +137,12 @@
                 <div>
                     <h3>Auto Potato</h3>
                     <p>Gain 100 potatoes per second</p>
-                    <p>Cost: <span id="autoUpgradeCost3">8750</span> Potatoes</p>
+                    <p>Cost: <span id="autoUpgradeCost4">8750</span> Potatoes</p>
                     <button onclick="buyAutoUpgrade4()">Buy</button>
                 </div>
             </div>
 
         </div>
-
     </div>
 
     <script src="script.js"></script>

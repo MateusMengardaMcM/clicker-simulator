@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Potato Skins</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="buttonsContainer">
+    <button id="backBtn" onclick="goBack()">← Back</button>
+  </div>
+
+  <div class="container skinsPage">
+    <div class="skinsBox">
+      <h1>Choose Your Potato Skin</h1>
+
+      <div id="skinList"></div>
+
+      <p id="confirmMsg"></p>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_SKINS = [
+      { file: "potato.png", name: "Classic" },
+      { file: "goldenPotato.png", name: "Golden" },
+      { file: "rainbowPotato.png", name: "Rainbow" }
+    ];
+
+    const SECRET_SKINS = [
+      { file: "lagartixaPotato.png", name: "Lagartixa" }
+    ];
+
+    function getUnlockedSkins() {
+      try {
+        return JSON.parse(localStorage.getItem("unlockedSkins") || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function buildCatalog() {
+      const unlocked = getUnlockedSkins();
+      const availableSecret = SECRET_SKINS.filter(s => unlocked.includes(s.file));
+      const allSkins = [...DEFAULT_SKINS, ...availableSecret];
+
+      const skinList = document.getElementById("skinList");
+      skinList.innerHTML = "";
+
+      allSkins.forEach(skin => {
+        const btn = document.createElement("button");
+        btn.className = "skinOption";
+        btn.onclick = () => selectSkin(skin.file);
+
+        const img = document.createElement("img");
+        img.src = skin.file;
+        img.alt = skin.name;
+
+        const p = document.createElement("p");
+        p.textContent = skin.name;
+
+        btn.appendChild(img);
+        btn.appendChild(p);
+        skinList.appendChild(btn);
+      });
+    }
+
+    function selectSkin(skinPath) {
+      localStorage.setItem("selectedSkin", skinPath);
+      document.getElementById("confirmMsg").textContent = "Skin selected!";
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 500);
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+
+    buildCatalog();
+  </script>
+
+</body>
+</html>
