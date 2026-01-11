@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trophies</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="buttonsContainer">
+    <button id="backBtn" onclick="window.location.href='index.html'">← Back</button>
+  </div>
+
+  <div class="container trophiesPage">
+    <div class="trophiesBox">
+      <h1>Trophies</h1>
+
+      <div class="trophiesSections">
+        <div class="trophiesSection">
+          <h2>Unlocked</h2>
+          <div id="unlockedTrophies" class="trophiesGrid"></div>
+        </div>
+
+        <div class="trophiesSection">
+          <h2>Locked</h2>
+          <div id="lockedTrophies" class="trophiesGrid"></div>
+        </div>
+      </div>
+
+      <p id="trophiesMsg"></p>
+    </div>
+  </div>
+
+  <script>
+    function getUnlockedTrophies() {
+      try {
+        return JSON.parse(localStorage.getItem("trophies") || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    const TROPHIES = [
+      { id: "first_click", name: "First Click", desc: "Click the potato once." },
+      { id: "first_buy", name: "First Purchase", desc: "Buy something in the shop." },
+      { id: "rebirth_1", name: "First Rebirth", desc: "Do your first rebirth." }
+    ];
+
+    function createTrophyCard(t, unlocked) {
+      const card = document.createElement("div");
+      card.className = "trophyCard" + (unlocked ? " unlocked" : " locked");
+
+      const title = document.createElement("h3");
+      title.textContent = t.name;
+
+      const desc = document.createElement("p");
+      desc.textContent = t.desc;
+
+      card.appendChild(title);
+      card.appendChild(desc);
+
+      return card;
+    }
+
+    function renderTrophies() {
+      const unlockedSet = new Set(getUnlockedTrophies());
+
+      const unlockedRoot = document.getElementById("unlockedTrophies");
+      const lockedRoot = document.getElementById("lockedTrophies");
+      unlockedRoot.innerHTML = "";
+      lockedRoot.innerHTML = "";
+
+      TROPHIES.forEach(t => {
+        const isUnlocked = unlockedSet.has(t.id);
+        const card = createTrophyCard(t, isUnlocked);
+        (isUnlocked ? unlockedRoot : lockedRoot).appendChild(card);
+      });
+    }
+
+    renderTrophies();
+  </script>
+
+</body>
+</html>

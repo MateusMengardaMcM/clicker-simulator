@@ -229,3 +229,107 @@ button:hover {
   margin-top: 12px;
   font-weight: bold;
 }
+
+#trophiesContainer{
+  display: flex;
+  align-items: center;
+}
+
+#trophiesBtn{
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#trophiesBtn img{
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+#trophiesList{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.trophyCard{
+  background: #fdf37a;
+  border: 2px solid #c4930a;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+}
+
+.trophyCard h3{
+  margin: 0 0 6px 0;
+}
+
+.trophyCard p{
+  margin: 0 0 10px 0;
+}
+
+.trophyStatus{
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.trophyCard.unlocked{
+  filter: none;
+}
+.trophiesPage{
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.trophiesBox{
+  width: min(900px, 95%);
+  margin-top: 20px;
+}
+
+.trophiesSections{
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.trophiesSection{
+  flex: 1;
+  min-width: 260px;
+}
+
+.trophiesGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.trophyCard{
+  background: #fdf37a;
+  border: 2px solid #c4930a;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+}
+
+.trophyCard h3{
+  margin: 0 0 6px 0;
+}
+
+.trophyCard p{
+  margin: 0;
+}
+
+.trophyCard.locked{
+  filter: grayscale(1) brightness(0.65);
+  opacity: 0.85;
+}
