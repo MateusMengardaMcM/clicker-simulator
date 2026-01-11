@@ -15,6 +15,62 @@ let autoUpgradeCost2 = 625;
 let autoUpgradeCost3 = 3000;
 let autoUpgradeCost4 = 8750;
 
+const clickSound = new Audio("click.wav");
+clickSound.volume = 0.5;
+clickSound.preload = "auto";
+
+const buySounds = Array.from({ length: 4 }, () => {
+  const a = new Audio("buy.wav");
+  a.volume = 0.6;
+  a.preload = "auto";
+  return a;
+});
+
+let buySoundIndex = 0;
+
+const errorSounds = Array.from({ length: 4 }, () => {
+  const a = new Audio("error.wav");
+  a.volume = 0.6;
+  a.preload = "auto";
+  return a;
+});
+
+let errorSoundIndex = 0;
+
+function playBuySound() {
+  const a = buySounds[buySoundIndex];
+  buySoundIndex = (buySoundIndex + 1) % buySounds.length;
+  a.currentTime = 0;
+  a.play().catch(() => {});
+}
+
+function playErrorSound() {
+  const a = errorSounds[errorSoundIndex];
+  errorSoundIndex = (errorSoundIndex + 1) % errorSounds.length;
+  a.currentTime = 0;
+  a.play().catch(() => {});
+}
+
+const bgMusic = new Audio("background.wav");
+bgMusic.loop = true;
+bgMusic.volume = 0.25;
+bgMusic.preload = "auto";
+
+function playBgMusic() {
+  bgMusic.play().catch(() => {
+    document.addEventListener("pointerdown", tryStartAfterBlock, { once: true });
+    document.addEventListener("keydown", tryStartAfterBlock, { once: true });
+  });
+}
+
+function tryStartAfterBlock() {
+  bgMusic.play().catch(() => {});
+}
+
+window.addEventListener("load", () => {
+  playBgMusic();
+});
+
 const DEFAULT_SKINS = [
   { file: "potato.png", name: "Classic" },
   { file: "goldenPotato.png", name: "Golden" },
@@ -23,6 +79,7 @@ const DEFAULT_SKINS = [
 
 const SECRET_SKINS = [
   { file: "lagartixaPotato.png", name: "Lagartixa" },
+  { file: "capypotato.png", name: "Capypotato"}
 ];
 
 function getUnlockedSkins() {
@@ -80,6 +137,9 @@ function updateUI() {
 }
 
 function clickButton() {
+  clickSound.currentTime = 0;
+  clickSound.play().catch(() => {});
+
   const gain = Math.floor(perClick * rebirthMultiplier);
   clicks += gain;
   updateUI();
@@ -95,120 +155,140 @@ function showMessage(text) {
 
 function buyClickUpgrade() {
   if (clicks >= clickUpgradeCost0) {
+    playBuySound();
     clicks -= clickUpgradeCost0;
     perClick += 1;
     clickUpgradeCost0 = Math.floor(clickUpgradeCost0 * 1.25);
     updateUI();
     showMessage("Click power upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Click Power upgrade.");
   }
 }
 
 function buyClickUpgrade1() {
   if (clicks >= clickUpgradeCost1) {
+    playBuySound();
     clicks -= clickUpgradeCost1;
     perClick += 5;
     clickUpgradeCost1 = Math.floor(clickUpgradeCost1 * 1.25);
     updateUI();
     showMessage("Click power upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Click Power upgrade.");
   }
 }
 
 function buyClickUpgrade2() {
   if (clicks >= clickUpgradeCost2) {
+    playBuySound();
     clicks -= clickUpgradeCost2;
     perClick += 10;
     clickUpgradeCost2 = Math.floor(clickUpgradeCost2 * 1.25);
     updateUI();
     showMessage("Click power upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Click Power upgrade.");
   }
 }
 
 function buyClickUpgrade3() {
   if (clicks >= clickUpgradeCost3) {
+    playBuySound();
     clicks -= clickUpgradeCost3;
     perClick += 50;
     clickUpgradeCost3 = Math.floor(clickUpgradeCost3 * 1.25);
     updateUI();
     showMessage("Click power upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Click Power upgrade.");
   }
 }
 
 function buyClickUpgrade4() {
   if (clicks >= clickUpgradeCost4) {
+    playBuySound();
     clicks -= clickUpgradeCost4;
     perClick += 100;
     clickUpgradeCost4 = Math.floor(clickUpgradeCost4 * 1.25);
     updateUI();
     showMessage("Click power upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Click Power upgrade.");
   }
 }
 
 function buyAutoUpgrade() {
   if (clicks >= autoUpgradeCost0) {
+    playBuySound();
     clicks -= autoUpgradeCost0;
     autoClick += 1;
     autoUpgradeCost0 = Math.floor(autoUpgradeCost0 * 1.33);
     updateUI();
     showMessage("Auto clicker upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Auto Clicker.");
   }
 }
 
 function buyAutoUpgrade1() {
   if (clicks >= autoUpgradeCost1) {
+    playBuySound();
     clicks -= autoUpgradeCost1;
     autoClick += 5;
     autoUpgradeCost1 = Math.floor(autoUpgradeCost1 * 1.33);
     updateUI();
     showMessage("Auto clicker upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Auto Clicker.");
   }
 }
 
 function buyAutoUpgrade2() {
   if (clicks >= autoUpgradeCost2) {
+    playBuySound();
     clicks -= autoUpgradeCost2;
     autoClick += 10;
     autoUpgradeCost2 = Math.floor(autoUpgradeCost2 * 1.33);
     updateUI();
     showMessage("Auto clicker upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Auto Clicker.");
   }
 }
 
 function buyAutoUpgrade3() {
   if (clicks >= autoUpgradeCost3) {
+    playBuySound();
     clicks -= autoUpgradeCost3;
     autoClick += 50;
     autoUpgradeCost3 = Math.floor(autoUpgradeCost3 * 1.33);
     updateUI();
     showMessage("Auto clicker upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Auto Clicker.");
   }
 }
 
 function buyAutoUpgrade4() {
   if (clicks >= autoUpgradeCost4) {
+    playBuySound();
     clicks -= autoUpgradeCost4;
     autoClick += 100;
     autoUpgradeCost4 = Math.floor(autoUpgradeCost4 * 1.33);
     updateUI();
     showMessage("Auto clicker upgraded!");
   } else {
+    playErrorSound();
     showMessage("Not enough clicks for Auto Clicker.");
   }
 }
@@ -274,6 +354,14 @@ function enterCode() {
     const newlyUnlocked = unlockSkin("lagartixaPotato.png");
     updateUI();
     showMessage(newlyUnlocked ? "SKIN UNLOCKED: Lagartixa!" : "You already unlocked Lagartixa!");
+    document.getElementById("codeInput").value = "";
+    return;
+  }
+
+  if (code === "Capybara") {
+    const newlyUnlocked = unlockSkin("capypotato.png");
+    updateUI();
+    showMessage(newlyUnlocked ? "SKIN UNLOCKED: Capypotato!" : "You already unlocked Lagartixa!");
     document.getElementById("codeInput").value = "";
     return;
   }

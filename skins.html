@@ -30,7 +30,8 @@
     ];
 
     const SECRET_SKINS = [
-      { file: "lagartixaPotato.png", name: "Lagartixa" }
+      { file: "lagartixaPotato.png", name: "Lagartixa" },
+      { file: "capypotato.png", name: "capypotato" }
     ];
 
     function getUnlockedSkins() {
@@ -79,8 +80,29 @@
       window.location.href = "index.html";
     }
 
+      const bgMusic = new Audio("background.wav");
+      bgMusic.loop = true;
+      bgMusic.volume = 0.25;
+      bgMusic.preload = "auto";
+
+      function playBgMusic() {
+        bgMusic.play().catch(() => {
+          document.addEventListener("pointerdown", tryStartAfterBlock, { once: true });
+          document.addEventListener("keydown", tryStartAfterBlock, { once: true });
+        });
+      }
+
+      function tryStartAfterBlock() {
+        bgMusic.play().catch(() => {});
+      }
+
+      window.addEventListener("load", () => {
+        playBgMusic();
+      });
+
     buildCatalog();
   </script>
+  <script src="script.js"></script>
 
 </body>
 </html>

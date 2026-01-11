@@ -42,7 +42,7 @@ h1 {
 }
 
 #message {
-    margin-top: 15px;
+    margin-top: 5px;
     min-height: 20px;
     font-weight: bold;
 }
@@ -126,7 +126,6 @@ button:hover {
     color: rgb(251, 255, 0);
 }
 
-/* --- TOP BAR --- */
 #buttonsContainer{
   position: fixed;
   top: 10px;
