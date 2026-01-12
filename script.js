@@ -130,7 +130,8 @@ function playBgMusic() {
 const TROPHY_NAMES = {
   first_click: "First Click",
   first_buy: "First Purchase",
-  rebirth_1: "First Rebirth"
+  rebirth_1: "First Rebirth",
+  viced_on_potatos: "Viced on Potatoes"
 };
 
 function getUnlockedTrophies() {
@@ -138,6 +139,12 @@ function getUnlockedTrophies() {
     return JSON.parse(localStorage.getItem("trophies") || "[]");
   } catch {
     return [];
+  }
+}
+
+function checkProgressTrophies() {
+  if (clicks >= 1_000_000) {
+    unlockTrophy("million_potatoes");
   }
 }
 
@@ -151,6 +158,12 @@ function unlockTrophy(id) {
 
   unlocked.push(id);
   setUnlockedTrophies(unlocked);
+
+  function millionPotatoes() {
+  if (clicks >= 1_000_000) {
+    unlockTrophy("Viced on Potatoes");
+  }
+}
 
   const el = document.getElementById("message");
   if (el) {
@@ -253,6 +266,8 @@ function clickButton() {
   const gain = Math.floor(perClick * rebirthMultiplier);
   clicks += gain;
 
+  checkProgressTrophies();
+  
   updateUI();
   saveGame();
 
@@ -431,10 +446,10 @@ function enterCode() {
   const code = (input ? input.value : "").trim();
 
   if (code === "T3stC0d3") {
-    clicks += 20000;
+    clicks += 1000000;
     updateUI();
     saveGame();
-    showMessage("CODE ACCEPTED! +20,000 potatoes");
+    showMessage("CODE ACCEPTED! +1,000,000 potatoes");
     if (input) input.value = "";
     return;
   }
