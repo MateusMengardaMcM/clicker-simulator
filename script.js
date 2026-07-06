@@ -445,11 +445,11 @@ function enterCode() {
   const input = document.getElementById("codeInput");
   const code = (input ? input.value : "").trim();
 
-  if (code === "T3stC0d3") {
-    clicks += 1000000;
+  if (code === "aBACATE") {
+    clicks += 987654;
     updateUI();
     saveGame();
-    showMessage("CODE ACCEPTED! +1,000,000 potatoes");
+    showMessage("CODE ACCEPTED! +987,654 potatoes");
     if (input) input.value = "";
     return;
   }
@@ -470,6 +470,15 @@ function enterCode() {
 
   showMessage("Invalid code");
   if (input) input.value = "";
+}
+
+function reset() {
+  clicks = 0;
+  perClick = 1;
+  autoClick = 0;
+  rebirthMultiplier = 1;
+  updateUI();
+  saveGame();
 }
 
 setInterval(applyAutoGain, 1000);

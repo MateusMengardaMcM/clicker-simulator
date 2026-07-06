@@ -7,27 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="tools">Botões</div>
+        <div id="buttonsContainer">
+            <button id="rebirthBtn" onclick="tryRebirth()">Rebirth</button>
 
-    <div id="buttonsContainer">
-        <button id="rebirthBtn" onclick="tryRebirth()">Rebirth</button>
+            <div id="codeContainer">
+                <input type="text" id="codeInput" placeholder="Enter code" />
+                <button id="codeBtn" onclick="enterCode()">OK</button>
+            </div>
 
-        <div id="codeContainer">
-            <input type="text" id="codeInput" placeholder="Enter code" />
-            <button id="codeBtn" onclick="enterCode()">OK</button>
+            <div id="skinContainer">
+                <button id="skinBtn" onclick="seeSkin()" aria-label="Skins">
+                    <img src="skinIcon.png" alt="skins">
+                </button>
+            </div>
+
+            <div id="trophiesContainer">
+                <button id="trophiesBtn" onclick="seeTrophies()" aria-label="Trophies">
+                    <img src="Trophies.png" alt="Trophies">
+                </button>
+            </div>
+            
+            <div id="reset">
+                <button id="resetBtn" onclick="reset()">RESET</button>
+            </div>
+            <p id="message">Suas mensagens aparecerão aqui</p>
         </div>
-
-        <div id="skinContainer">
-            <button id="skinBtn" onclick="seeSkin()" aria-label="Skins">
-                <img src="skinIcon.png" alt="skins">
-            </button>
-        </div>
-
-        <div id="trophiesContainer">
-            <button id="trophiesBtn" onclick="seeTrophies()" aria-label="Trophies">
-                <img src="Trophies.png" alt="Trophies">
-            </button>
-        </div>
-    '   <p id="message"></p>
     </div>
 
     <div class="container">

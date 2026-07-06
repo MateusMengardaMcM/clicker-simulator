@@ -333,3 +333,7 @@ button:hover {
   filter: grayscale(1) brightness(0.65);
   opacity: 0.85;
 }
+
+#resetBtn {
+  display: block;
+}
